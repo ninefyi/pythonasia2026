@@ -1,0 +1,32 @@
+%%{init: 
+    {
+        'themeVariables': 
+        { 
+            'fontSize': '10px', 
+            'fontFamily': 'monospace'
+        }
+        ,"theme": "default"
+    }
+}%% 
+sequenceDiagram
+    participant U as User
+    participant D as Django View
+    participant V as VoyageAI
+    participant M as MongoDB Atlas
+
+    U->>D: Sends Query "Space dogs"
+    
+    par Vector Path
+        D->>V: Embed("Space dogs")
+        V-->>D: Vector [0.1, 0.5, ...]
+        D->>M: $vectorSearch(Vector)
+        M-->>D: [Doc A (Score 0.9), Doc B (Score 0.8)]
+    and Keyword Path
+        D->>M: $search("Space dogs")
+        M-->>D: [Doc C (Score 5.0), Doc A (Score 2.0)]
+    end
+
+    D->>D: Calculate RRF Scores
+    Note right of D: Doc A is in both -> High Score<br/>Doc B/C are unique -> Lower Score
+    
+    D->>U: Return Sorted List [Doc A, Doc C, Doc B]

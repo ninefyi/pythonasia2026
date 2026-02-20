@@ -1,0 +1,27 @@
+%%{init: 
+    {
+        'themeVariables': 
+        { 
+            'fontSize': '10px', 
+            'fontFamily': 'monospace'
+        }
+        ,"theme": "default"
+    }
+}%% 
+graph TD
+    User[User] -->|Search Query| Frontend[Django Frontend]
+    Frontend -->|HTTP Request| View[Django View]
+    
+    subgraph Search Logic
+        View -->|1. Generate Embedding| Voyage[VoyageAI API]
+        Voyage -->|Vector| View
+        
+        View -->|2. Vector Search| MongoVector[MongoDB Atlas Vector Search]
+        View -->|3. Keyword Search| MongoText[MongoDB Atlas Text Search]
+        
+        MongoVector -->|Results A| RRF[RRF Fusion Algorithm]
+        MongoText -->|Results B| RRF
+    end
+    
+    RRF -->|Ranked Results| View
+    View -->|Rendered HTML| User

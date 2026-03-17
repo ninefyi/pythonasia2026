@@ -11,73 +11,100 @@ This repository contains the workshop materials and code for the "Building a Rec
 
 ## Getting Started
 
-### Prerequisites
+Follow these steps to set up your environment and run the workshop materials.
 
-- Python 3.10+
-- `uv` (will be installed by setup script if missing)
-- `marp-cli` (for viewing slides)
-- MongoDB Atlas Account
-- VoyageAI API Key
+### 1. Prerequisites
 
-### Setup
+Before you begin, ensure you have the following:
 
-1. **Clone existing repository**:
+- **Python 3.10+**: [Download here](https://www.python.org/downloads/)
+- **MongoDB Atlas Account**: [Sign up for free](https://www.mongodb.com/cloud/atlas/register)
+- **VoyageAI API Key**: [Get your key here](https://www.voyageai.com/)
+- **Marp CLI** (for slides): Install via npm: `npm install -g @marp-team/marp-cli`
 
-    ```bash
-    git clone https://github.com/yourusername/20260321_PythonAsia2026.git
-    cd 20260321_PythonAsia2026
-    ```
+### 2. Initial Setup
 
-2. **Run Setup Script**:
+1. **Clone the repository**:
 
-    ```bash
-    ./setup.sh
-    ```
+   ```bash
+   git clone https://github.com/yourusername/20260321_PythonAsia2026.git
+   cd 20260321_PythonAsia2026
+   ```
 
-    This will install `uv`, create a virtual environment, and install all dependencies.
+2. **Run the setup script**:
+   This script installs `uv`, creates a virtual environment, and installs all dependencies.
 
-3. **Environment Variables**:
-    Create a `.env` file in `django_app/`:
+   ```bash
+   chmod +x setup.sh
+   ./setup.sh
+   ```
 
-    ```env
-    MONGO_URI=mongodb+srv://<user>:<password>@cluster.mongodb.net/?retryWrites=true&w=majority
-    VOYAGE_API_KEY=vy-your-api-key
-    ```
+3. **Activate the virtual environment**:
 
-4. **Ingest Data**:
+   ```bash
+   source .venv/bin/activate
+   ```
 
-    ```bash
-    source .venv/bin/activate
-    cd django_app
-    python manage.py makemigrations
-    python manage.py migrate
-    python manage.py ingest
-    ```
+### 3. Configuration
 
-5. **Run Server**:
-
-    ```bash
-    python manage.py runserver
-    ```
-
-    Open `http://127.0.0.1:8000/search` to test.
-
-## Viewing Slides
-
-To view the slides, use `marp-cli`:
+Create a `.env` file in the `django_app/` directory to store your credentials:
 
 ```bash
-marp -s slides/
+# Path: django_app/.env
+MONGO_URI="mongodb+srv://<user>:<password>@cluster.mongodb.net/pythonasia_workshop?retryWrites=true&w=majority"
+VOYAGE_API_KEY="vy-your-actual-api-key-here"
 ```
 
-This will start a local server to view the presentation.
+### 4. Verify Your Setup (Optional but Recommended)
 
-## Key Concepts
+Run the included diagnostic script to ensure your VoyageAI connection is working:
+
+```bash
+python test_voyage.py
+```
+
+*If prompted, enter a sample sentence. You should see the embedding dimensions and the first few vector values.*
+
+### 5. Data Ingestion & Database Setup
+
+Initialize the MongoDB collection and ingest the sample movie data:
+
+```bash
+cd django_app
+python manage.py migrate
+python manage.py ingest
+```
+
+### 6. Run the Recommendation Application
+
+Start the Django development server:
+
+```bash
+python manage.py runserver
+```
+
+Visit [http://127.0.0.1:8000](http://127.0.0.1:8000) to test the Hybrid Search.
+
+---
+
+## Viewing the Workshop Slides
+
+The slides are written in Markdown and can be viewed using Marp.
+
+1. **Start the Marp server**:
+   From the project root directory, run:
+
+   ```bash
+   marp -s slides/
+   ```
+
+2. **Open in Browser**:
+   Open [http://localhost:8080](http://localhost:8080) to view the interactive presentation.
+
+---
+
+## Key Concepts Covered
 
 - **Hybrid Search**: Combining Vector Search (Semantic) and Text Search (Keyword).
 - **RRF (Reciprocal Rank Fusion)**: The algorithm used to merge the two result sets.
 - **VoyageAI**: The embedding model provider.
-
-## Contact
-
-- Instructor: [Your Name]

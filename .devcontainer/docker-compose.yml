@@ -12,15 +12,3 @@ services:
     # Overrides default command so things don't shut down after the process ends.
     command: sleep infinity
     # Link to MongoDB service
-    depends_on:
-      - db
-
-  db:
-    image: mongodb/mongodb-community-server:latest
-    ports:
-      - "27017:27017"
-    volumes:
-      - mongodb-data:/data/db
-
-volumes:
-  mongodb-data:

@@ -13,13 +13,41 @@ This repository contains the workshop materials and code for the "Building a Rec
 
 Follow these steps to set up your environment and run the workshop materials.
 
+## Notebook-First Class Path (Beginner Recommended)
+
+For classroom delivery, use the notebooks in this order:
+
+1. `notebooks/00_welcome_and_outcomes.ipynb`
+2. `notebooks/01_environment_check.ipynb`
+3. `notebooks/02_chunking_lab.ipynb`
+4. `notebooks/03_embeddings_lab.ipynb`
+5. `notebooks/04_similarity_lab.ipynb`
+6. `notebooks/05_mongodb_search_lab.ipynb`
+7. `notebooks/06_hybrid_fusion_lab.ipynb`
+8. `notebooks/07_mini_challenge.ipynb`
+9. `notebooks/08_bridge_to_django.ipynb`
+
+Suggested pacing for a 2-hour beginner session:
+
+- 10 min: 00 + 01 (go/no-go checks)
+- 20 min: 02 (chunking intuition)
+- 20 min: 03 (embedding generation)
+- 15 min: 04 (cosine ranking basics)
+- 25 min: 05 (MongoDB vector + keyword search)
+- 15 min: 06 (RRF fusion)
+- 10 min: 07 + 08 (challenge + app bridge)
+
+Classroom checkpoint policy:
+
+- Do not move past Notebook 01 until all checks pass.
+- If API/network fails during class, continue with Notebooks 02, 04, 06, and 08 while troubleshooting.
+
 ### 1. Prerequisites
 
 Before you begin, ensure you have the following:
 
 - **Python 3.10+**: [Download here](https://www.python.org/downloads/)
 - **MongoDB Atlas Account**: [Sign up for free](https://www.mongodb.com/cloud/atlas/register)
-- **VoyageAI API Key**: [Get your key here](https://www.voyageai.com/)
 - **Marp CLI** (for slides): Install via npm: `npm install -g @marp-team/marp-cli`
 
 ### 2. Initial Setup
@@ -51,7 +79,7 @@ Create a `.env` file in the `django_app/` directory to store your credentials:
 
 ```bash
 # Path: django_app/.env
-MONGO_URI="mongodb+srv://<user>:<password>@cluster.mongodb.net/pythonasia_workshop?retryWrites=true&w=majority"
+MONGODB_URI="mongodb+srv://<user>:<password>@cluster.mongodb.net/pythonasia2026_workshop?retryWrites=true&w=majority"
 VOYAGE_API_KEY="vy-your-actual-api-key-here"
 ```
 
@@ -64,6 +92,8 @@ python test_voyage.py
 ```
 
 *If prompted, enter a sample sentence. You should see the embedding dimensions and the first few vector values.*
+
+If you are teaching or learning with notebooks, run `notebooks/01_environment_check.ipynb` immediately after this step.
 
 ### 5. Data Ingestion & Database Setup
 

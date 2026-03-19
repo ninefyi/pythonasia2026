@@ -1,0 +1,8 @@
+django
+django-mongodb-backend
+voyageai
+langchain
+langchain-community
+python-dotenv
+gradio
+ipykernel

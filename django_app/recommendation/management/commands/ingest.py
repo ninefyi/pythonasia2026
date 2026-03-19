@@ -32,7 +32,7 @@ class Command(BaseCommand):
         
         try:
             self.stdout.write("Generating embeddings...")
-            result = voyage_client.embed(plots, model="voyage-large-2")
+            result = voyage_client.embed(plots, model="voyage-4-large")
             
             # Clear existing data first?
             Movie.objects.all().delete()

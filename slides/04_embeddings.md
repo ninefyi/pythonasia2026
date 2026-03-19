@@ -45,9 +45,9 @@ theme: default
 ## Why VoyageAI? (2/2)
 
 - **Model Choices**:
-  - `voyage-large-2`: General purpose, high quality.
-  - `voyage-code-2`: Optimized for code search.
-  - `voyage-lite-02-instruct`: Lightweight, fast.
+  - `voyage-4-large`: General purpose, high quality.
+  - `voyage-code-3`: Optimized for code search.
+  - `voyage-4-lite`: Lightweight, fast.
 
 ---
 
@@ -67,7 +67,7 @@ import voyageai
 vo = voyageai.Client()
 
 text = "This is a movie about space travel."
-vector = vo.embed([text], model="voyage-large-2").embeddings[0]
+vector = vo.embed([text], model="voyage-4-large").embeddings[0]
 
 print(len(vector)) 
 # Output: 1024
@@ -87,7 +87,7 @@ print(len(vector))
 ## Vector Dimensions (1/2)
 
 - **Dimension**: The length of the vector list.
-- **Voyage-large-2**: 1024 dimensions.
+- **voyage-4-large**: 1024 dimensions.
 - **OpenAI Ada-002**: 1536 dimensions.
 - **Importance**:
   - You MUST use the same model for query and documents.
@@ -154,7 +154,7 @@ print(len(vector))
 
 - **Analysis**:
   - **path**: Which field holds the vector? (`embedding`)
-  - **numDimensions**: Must match model! (1024 for voyage-large-2)
+  - **numDimensions**: Must match model! (1024 for voyage-4-large)
   - **similarity**: How to measure distance? (`cosine` is standard).
 
 ---

@@ -12,15 +12,6 @@ theme: default
 
 ---
 
-## Instructor Introduction
-
-- **Name**: [Your Name/Instructor Name]
-- **Role**: AI/ML Engineer / Developer
-- **Topic**: Hybrid Search Recommendation Systems
-- **Goal**: By end of this workshop, you will have a working recommendation engine!
-
----
-
 ## Workshop Agenda (2 Hours)
 
 1. **Introduction to Hybrid Search** (10 mins)
@@ -170,7 +161,7 @@ theme: default
 ## Why VoyageAI?
 
 - **State-of-the-art Embeddings**: High performance on retrieval benchmarks.
-- **Specialized Models**: `voyage-large-2`, `voyage-code-2`.
+- **Specialized Models**: `voyage-4-large`, `voyage-code-3`.
 - **Context Window**: Supports large context lengths.
 
 ---

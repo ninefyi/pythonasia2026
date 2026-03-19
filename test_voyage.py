@@ -63,7 +63,7 @@ def main() -> None:
 
     try:
         client = voyageai.Client(api_key=api_key)
-        result = client.embed([text], model="voyage-large-2")
+        result = client.embed([text], model="voyage-4-large")
         vector = result.embeddings[0]
     except Exception as exc:
         print(f"VoyageAI request failed: {exc}", file=sys.stderr)

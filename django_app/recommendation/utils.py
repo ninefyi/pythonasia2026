@@ -9,7 +9,7 @@ import sys
 def get_mongo_client():
     try:
         # Use the URI from settings
-        uri = settings.DATABASES['default']['URI']
+        uri = settings.DATABASES['default']['HOST']
         client = MongoClient(uri)
         return client
     except Exception as e:
@@ -26,5 +26,6 @@ def get_db():
 def get_collection():
     db = get_db()
     if db is not None:
-        return db['recommendation_movie'] # Default Django table name format: app_model
+        collection_name = settings.DATABASES['default'].get('COLLECTION_NAME', 'recommendation_movies')
+        return db[collection_name]
     return None

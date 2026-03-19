@@ -1,0 +1,51 @@
+{
+	"name": "PythonAsia 2026 Workshop",
+	"dockerComposeFile": "docker-compose.yml",
+	"service": "app",
+	"workspaceFolder": "/workspaces/20260321_PythonAsia2026",
+
+	// Use 'features' to install things from a central repository.
+	"features": {
+		"ghcr.io/devcontainers/features/node-js:1": {
+			"version": "20"
+		}
+	},
+
+	// Configure tool-specific properties.
+	"customizations": {
+		// Configure properties specific to VS Code.
+		"vscode": {
+			// Set default-settings for VS Code.
+			"settings": {
+				"python.defaultInterpreterPath": "/usr/local/bin/python",
+				"python.languageServer": "Pylance",
+				"python.linting.enabled": true,
+				"python.linting.pylintEnabled": true,
+				"python.formatting.provider": "black",
+				"jupyter.askForKernelRestart": false,
+				"editor.formatOnSave": true
+			},
+
+			// Add the IDs of extensions you want installed when the container is created.
+			"extensions": [
+				"ms-python.python",
+				"ms-python.vscode-pylance",
+				"ms-toolsai.jupyter",
+				"mongodb.mongodb-vscode",
+				"marp-team.marp-vscode",
+				"bpruitt-goddard.mermaid-markdown-syntax-highlighting",
+				"charliermarsh.ruff"
+			]
+		}
+	},
+
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// 8000: Django, 8080: Marp, 7860: Gradio, 27017: MongoDB
+	"forwardPorts": [8000, 8080, 7860, 27017],
+
+	// Use 'postCreateCommand' to run commands after the container is created.
+	"postCreateCommand": "bash .devcontainer/postCreateCommand.sh",
+
+	// Set `remoteUser` to `vscode` to use it instead of root.
+	"remoteUser": "vscode"
+}

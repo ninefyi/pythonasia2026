@@ -1,5 +1,4 @@
 
-from django_mongodb_backend.models import Model
 from django.db import models
 from django_mongodb_backend.fields import ArrayField
 
@@ -10,7 +9,7 @@ class Movie(models.Model):
     # The official backend documentation suggests using ArrayField for vectors.
     embedding = ArrayField(
         models.FloatField(),
-        size=1024, # Dimension of voyage-large-2
+        size=1024, # Dimension of voyage-4-large
         blank=True,
         null=True,
     )

@@ -18,7 +18,9 @@ def search_view(request):
     # 1. Vector Search
     vector_results = []
     try:
-        query_embedding = voyage_client.embed([query], model="voyage-large-2").embeddings[0]
+        query_embedding = voyage_client.embed([query], model="voyage-4-large").embeddings[0]
+
+        print(f"Query: {query}")
         
         # Access the raw collection from the model
         # The official backend exposes the underlying collection via default_manager
@@ -40,7 +42,7 @@ def search_view(request):
             pass 
 
         # Let's assume standard PyMongo access for the complex pipeline
-        # The backend sets 'pythonasia_workshop' as the DB name
+        # The backend sets 'pythonasia2026_workshop' as the DB name
         # We can construct strictly via PyMongo for the pipeline part to guarantee $vectorSearch works
         # This bypasses the ORM for the *search* but uses the ORM-managed collection.
         
@@ -48,7 +50,7 @@ def search_view(request):
         # without worrying about ORM limitations for $vectorSearch stage.
         # In a real app, you'd extract 'get_collection' from the django connection properly.
         from pymongo import MongoClient
-        client = MongoClient(settings.DATABASES['default']['URI'])
+        client = MongoClient(settings.DATABASES['default']['HOST'])
         db = client[settings.DATABASES['default']['NAME']]
         collection = db[collection_name]
 

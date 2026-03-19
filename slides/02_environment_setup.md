@@ -25,7 +25,6 @@ theme: default
 ## Prerequisites (2/2)
 
 - **VoyageAI API Key**:
-  - Sign up at `voyageai.com`.
   - Create a new API Key.
   - Save it safely! (We'll use it soon).
 
@@ -224,7 +223,7 @@ python test_mongo.py
 
 ```env
 VOYAGE_API_KEY=vy-your-key-here
-MONGO_URI=mongodb+srv://...
+MONGODB_URI=mongodb+srv://...
 ```
 
 ---
@@ -241,7 +240,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 client = voyageai.Client(api_key=os.getenv("VOYAGE_API_KEY"))
-result = client.embed(["Hello, world!"], model="voyage-large-2")
+result = client.embed(["Hello, world!"], model="voyage-4-large")
 print(result.embeddings[0][:5]) # Print first 5 dimensions
 ```
 

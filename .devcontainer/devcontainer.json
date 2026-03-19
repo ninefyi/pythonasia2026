@@ -3,7 +3,6 @@
 	"dockerComposeFile": "docker-compose.yml",
 	"service": "app",
 	"workspaceFolder": "/workspaces/20260321_PythonAsia2026",
-
 	// Configure tool-specific properties.
 	"customizations": {
 		// Configure properties specific to VS Code.
@@ -18,7 +17,6 @@
 				"jupyter.askForKernelRestart": false,
 				"editor.formatOnSave": true
 			},
-
 			// Add the IDs of extensions you want installed when the container is created.
 			"extensions": [
 				"ms-python.python",
@@ -31,11 +29,11 @@
 			]
 		}
 	},
-
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	// 8000: Django
-	"forwardPorts": [8000],
-
+	// 8000: Django, 8080: Marp, 7860: Gradio, 27017: MongoDB
+	"forwardPorts": [
+		8000
+	],
 	// Set `remoteUser` to `vscode` to use it instead of root.
 	"remoteUser": "vscode"
 }

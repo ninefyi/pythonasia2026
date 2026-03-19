@@ -2,11 +2,16 @@
 ARG VARIANT="3.13-bookworm"
 FROM mcr.microsoft.com/devcontainers/python:1-${VARIANT}
 
-# [Optional] Install additional OS packages.
-RUN rm -f /etc/apt/sources.list.d/yarn.list /etc/apt/sources.list.d/yarn.sources
-# RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
-#     && apt-get -y install --no-install-recommends <your-package-list-here>
-
-# Install Node.js 20 for Marp
-RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
-    && apt-get install -y nodejs
+# Install Node.js 20 (includes npm).
+# Also disable broken Yarn apt source if present to avoid apt update failures.
+RUN set -eux; \
+    if [ -f /etc/apt/sources.list.d/yarn.list ]; then \
+    sed -i 's/^deb /# deb /' /etc/apt/sources.list.d/yarn.list; \
+    fi; \
+    apt-get update; \
+    apt-get install -y --no-install-recommends ca-certificates curl gnupg; \
+    curl -fsSL https://deb.nodesource.com/setup_20.x | bash -; \
+    apt-get install -y --no-install-recommends nodejs; \
+    node -v; \
+    npm -v; \
+    rm -rf /var/lib/apt/lists/*

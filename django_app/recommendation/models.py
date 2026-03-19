@@ -1,8 +1,12 @@
 
 from django.db import models
+from django.conf import settings
 from django_mongodb_backend.fields import ArrayField
 
 class Movie(models.Model):
+    class Meta:
+        db_table = settings.DATABASES['default'].get('COLLECTION_NAME', 'recommendation_movies')
+
     title = models.CharField(max_length=200)
     plot = models.TextField()
     # Vector field integration might vary, but standard ArrayField works for storage

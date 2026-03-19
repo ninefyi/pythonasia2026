@@ -4,13 +4,6 @@
 	"service": "app",
 	"workspaceFolder": "/workspaces/20260321_PythonAsia2026",
 
-	// Use 'features' to install things from a central repository.
-	"features": {
-		"ghcr.io/devcontainers/features/node-js:1": {
-			"version": "20"
-		}
-	},
-
 	// Configure tool-specific properties.
 	"customizations": {
 		// Configure properties specific to VS Code.
@@ -42,9 +35,6 @@
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// 8000: Django, 8080: Marp, 7860: Gradio, 27017: MongoDB
 	"forwardPorts": [8000, 8080, 7860, 27017],
-
-	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "bash .devcontainer/postCreateCommand.sh",
 
 	// Set `remoteUser` to `vscode` to use it instead of root.
 	"remoteUser": "vscode"

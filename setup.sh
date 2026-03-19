@@ -15,6 +15,6 @@ echo "Activating virtual environment..."
 source .venv/bin/activate
 
 echo "Installing dependencies..."
-uv pip install -r django_app/requirements.txt
+uv pip install -r requirements.txt
 
 echo "Setup complete! Activate the environment with 'source .venv/bin/activate'"

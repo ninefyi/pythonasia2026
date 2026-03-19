@@ -44,7 +44,7 @@ theme: default
 - **Create with uv**:
 
 ```bash
-uv venv
+python -m venv
 ```
 
 - **Activate (Mac/Linux)**:
@@ -80,13 +80,13 @@ source .venv/bin/activate
 - **Core Libraries**:
 
 ```bash
-uv pip install django pymongo
+python -m pip install django pymongo
 ```
 
 - **AI & Search Libraries**:
 
 ```bash
-uv pip install langchain langchain-community voyageai
+python -m pip install langchain langchain-community voyageai
 ```
 
 ---
@@ -96,7 +96,7 @@ uv pip install langchain langchain-community voyageai
 - **Visualization & Utilities**:
 
 ```bash
-uv pip install gradio python-dotenv
+python -m pip install python-dotenv
 ```
 
 - **Note**: `uv` installs packages in parallel, making it very fast.
@@ -108,7 +108,7 @@ uv pip install gradio python-dotenv
 - Verify installation:
 
 ```bash
-uv pip list
+python -m pip list
 ```
 
 - Check for meaningful output (lists installed packages).

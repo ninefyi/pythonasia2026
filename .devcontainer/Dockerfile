@@ -10,9 +10,3 @@ RUN rm -f /etc/apt/sources.list.d/yarn.list /etc/apt/sources.list.d/yarn.sources
 # Install Node.js 20 for Marp
 RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
     && apt-get install -y nodejs
-
-# Install uv for package management
-RUN curl -LsSf https://astral.sh/uv/install.sh | env UV_INSTALL_DIR="/usr/local/bin" sh
-
-# Install marp-cli for slides
-RUN su vscode -c "npm install -g @marp-team/marp-cli"

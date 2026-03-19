@@ -33,8 +33,8 @@
 	},
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	// 8000: Django, 8080: Marp, 7860: Gradio, 27017: MongoDB
-	"forwardPorts": [8000, 8080, 7860, 27017],
+	// 8000: Django
+	"forwardPorts": [8000],
 
 	// Set `remoteUser` to `vscode` to use it instead of root.
 	"remoteUser": "vscode"

@@ -81,6 +81,8 @@ Create a `.env` file in the `django_app/` directory to store your credentials:
 # Path: django_app/.env
 MONGODB_URI="mongodb+srv://<user>:<password>@cluster.mongodb.net/pythonasia2026_workshop?retryWrites=true&w=majority"
 VOYAGE_API_KEY="vy-your-actual-api-key-here"
+DB_NAME="pythonasia2026_workshop"
+COLLECTION_NAME="recommendation_movies"
 ```
 
 ### 4. Verify Your Setup (Optional but Recommended)
